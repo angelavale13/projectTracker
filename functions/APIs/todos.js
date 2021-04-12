@@ -14,6 +14,7 @@ exports.getAllTodos = (request, response) => {
                     todoId: doc.id,
                     title: doc.data().title,
                     body: doc.data().body,
+                    status: doc.data().status,
                     createdAt: doc.data().createdAt,
                 });
             });
@@ -37,10 +38,15 @@ exports.postOneTodo = (request, response) => {
     if(request.body.title.trim() === '') {
         return response.status(400).json({ title: 'Must not be empty' });
     }
+
+    if(request.body.status.trim() === '') {
+        request.body.status = 'backLog';
+    }
     
     const newTodoItem = {
         title: request.body.title,
         body: request.body.body,
+        status: request.body.status,
         createdAt: new Date().toISOString()
     }
     db
