@@ -27,8 +27,6 @@ exports.getAllTodos = (request, response) => {
 };
 
 //Add new method postOneTodo, we are adding a new Todo to our database.
- 
-
 exports.postOneTodo = (request, response) => {
     //If elements of our body are empty, then return response 400
 	if (request.body.body.trim() === '') {

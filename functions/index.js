@@ -1,3 +1,4 @@
+//use cors to tell browser to accept api call
 const cors = require('cors');
 
 const functions = require('firebase-functions');
